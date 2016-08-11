@@ -37,7 +37,7 @@ public class Auth0UserDetails implements UserDetails {
         }
 
         if (map.containsKey("email")) {
-            this.emailVerified = Boolean.valueOf(map.get("email_verified").toString());
+            this.emailVerified = map.containsKey("email_verified") ? Boolean.valueOf(map.get("email_verified").toString()) : false;
         }
         setupGrantedAuthorities(map, authorityStrategy);
     }
